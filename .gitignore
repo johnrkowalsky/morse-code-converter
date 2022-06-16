@@ -3,3 +3,4 @@
 cov-html
 venv
 .coverage
+__pycache__
