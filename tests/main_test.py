@@ -1,4 +1,5 @@
 
+import pytest
 from src.main import get_phrase, upper_phrase, split_phrase, get_morse
 
 
@@ -22,3 +23,9 @@ def test_split_phrase(monkeypatch):
 def test_get_morse(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: "sos")
     assert get_morse() == ["...", "---", "..."]
+
+def test_wrong_symbol_input(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: "sos*")
+    with pytest.raises(KeyError):
+        get_morse()
+    
